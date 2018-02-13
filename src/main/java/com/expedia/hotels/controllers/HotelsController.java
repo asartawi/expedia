@@ -27,6 +27,8 @@ public class HotelsController {
 			@RequestParam(name="maxGuestRating", required=false) String maxGuestRating,
 			@RequestParam(name="minTotalRate", required=false) String minTotalRate,
 			@RequestParam(name="maxTotalRate", required=false) String maxTotalRate,
+			@RequestParam(name="minAverageRate", required=false) String minAverageRate,
+			@RequestParam(name="maxAverageRate", required=false) String maxAverageRate,
 			@RequestParam(name="lengthOfStay", required=false) String lengthOfStay) {
 		return offerService.getHotelOffers(destinationName, minTripStartDate, maxTripStartDate, minStarRating,
 				maxStarRating, minGuestRating, maxGuestRating, minTotalRate, maxTotalRate, lengthOfStay);

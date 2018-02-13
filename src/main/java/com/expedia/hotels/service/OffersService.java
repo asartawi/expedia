@@ -11,7 +11,8 @@ import com.expedia.hotels.service.models.HotelDeals;
 public class OffersService {
 	
 	public HotelDeals getHotelOffers(String destinationName, String minTripStartDate, String maxTripStartDate, String minStarRating,
-			String maxStarRating, String minGuestRating, String maxGuestRating, String minTotalRate, String maxTotalRate, String lengthOfStay) {
+			String maxStarRating, String minGuestRating, String maxGuestRating, String minTotalRate, String maxTotalRate, String lengthOfStay, 
+			String minAverageRate, String maxAverageRate) {
 		RestTemplate restTemplate = new RestTemplate();
 		String offersUrl = "https://offersvc.expedia.com/offers/v2/getOffers?scenario=deal-finder&page=foo&uid=foo&productType=Hotel";
 
@@ -50,6 +51,14 @@ public class OffersService {
 		
 		if (!StringUtils.isEmpty(maxTotalRate)) {
 			builder.queryParam("maxTotalRate", maxTotalRate);
+		}
+		
+		if (!StringUtils.isEmpty(minAverageRate)) {
+			builder.queryParam("minAverageRate", minAverageRate);
+		}
+		
+		if (!StringUtils.isEmpty(maxAverageRate)) {
+			builder.queryParam("maxAverageRate", maxAverageRate);
 		}
 		
 		if (!StringUtils.isEmpty(lengthOfStay)) {
