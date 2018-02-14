@@ -1,5 +1,6 @@
 package com.expedia.hotels.service;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
@@ -10,11 +11,32 @@ import com.expedia.hotels.service.models.HotelDeals;
 @Service
 public class OffersService {
 	
+	@Value("${expedia.offers.api.url}")
+	private String offersUrl;
+	
+	/**
+	 * Get hotels offers service 
+	 * Fetches all the offers with applying the following filters
+	 * @param destinationName location name
+	 * @param minTripStartDate start date
+	 * @param maxTripStartDate end date
+	 * @param minStarRating 
+	 * @param maxStarRating
+	 * @param minGuestRating
+	 * @param maxGuestRating
+	 * @param minTotalRate
+	 * @param maxTotalRate
+	 * @param lengthOfStay
+	 * @param minAverageRate
+	 * @param maxAverageRate
+	 * @return
+	 */
 	public HotelDeals getHotelOffers(String destinationName, String minTripStartDate, String maxTripStartDate, String minStarRating,
 			String maxStarRating, String minGuestRating, String maxGuestRating, String minTotalRate, String maxTotalRate, String lengthOfStay, 
 			String minAverageRate, String maxAverageRate) {
+		
+		// Fill the filters inside the rest temlate params
 		RestTemplate restTemplate = new RestTemplate();
-		String offersUrl = "https://offersvc.expedia.com/offers/v2/getOffers?scenario=deal-finder&page=foo&uid=foo&productType=Hotel";
 
 		UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(offersUrl);
 		if (!StringUtils.isEmpty(destinationName)) {
@@ -65,6 +87,7 @@ public class OffersService {
 			builder.queryParam("lengthOfStay", lengthOfStay);
 		}
 		
+		// get the data and assign it to the object
 		HotelDeals hotelOffers = restTemplate .getForObject(builder.toUriString(), HotelDeals.class);
 		return hotelOffers;
 	}

@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "expedia.offers.api.url",
+  "type": "java.lang.String",
+  "description": "The API url that we use to get the offers"
+}]}

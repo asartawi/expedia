@@ -33,8 +33,6 @@ public class ExpediaApplicationTests {
 
 	}
 	
-
-	
 	@Test
 	public void testExpediaApiWithFilter() {
 		HotelDeals hotelOffers = offerService.getHotelOffers(null, null, null, null, null, null, null, null, null, null, "100", null);
@@ -45,7 +43,5 @@ public class ExpediaApplicationTests {
 			Assert.assertNotNull(offer.getHotelPricingInfo());
 			Assert.assertTrue(offer.getHotelPricingInfo().getAveragePriceValue()>=100.0);
 		}
-
 	}
-
 }
