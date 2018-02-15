@@ -10,13 +10,14 @@ In this project I'am using multiple technologies to achieve the development stac
 
 
 ## FE stack
-Nodejs - Express server to host the application
-Angular for FE routing, two way databinding, layouting, ..etc
-html5
-css, ssas
-jquery
-bootstrap
-Google places API
+* Nodejs - Express server to host the application
+* Angular for FE routing, two way databinding, layouting, ..etc (Note: This is my first trial with Angular, I have a past experience with Angularjs 1.5 but seems Angular is totally different in concepts point of view)
+* Typescript
+* html5
+* css, ssas
+* jquery
+* bootstrap
+* Google places API
 
 
 ## BE stack
@@ -56,3 +57,5 @@ I usually tend to separate each component of my application in a standalone proj
 * Better organize the FE code to be component based eg: filters shall be in a separate component
 
 * Expose a better API documentation, right now you can check a simple API documentation by calling /mappings API
+
+
